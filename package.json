@@ -1,0 +1,31 @@
+{
+  "name": "banner_design",
+  "type":"module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node backend/app.js",
+    "start-dev": "npx nodemon backend/app.js",
+    "client": "quasar dev --prefix frontend",
+    "dev": "concurrently \"npm run start-dev\" \"npm run client\"",
+    "data:import": "node backend/seeder",
+    "data:destroy": "node backend/seeder -d"
+  },
+  "author": "minhaj",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.3",
+    "morgan": "^1.10.0",
+    "bcryptjs": "^2.4.3",
+    "express-async-handler": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "concurrently": "^7.2.2"
+  }
+}
