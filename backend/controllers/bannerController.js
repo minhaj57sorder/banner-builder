@@ -1,5 +1,6 @@
 import expressAsyncHandler from "express-async-handler";
 import Banner from '../models/bannerModel.js'
+import GlobalCss from '../models/globalCssModel.js'
 import { writeFile, createWriteStream, createReadStream } from 'fs';
 // @desc    add banner items
 // @route   post /api/banners/
@@ -102,6 +103,31 @@ const addBannerItems = expressAsyncHandler(async (req, res) => {
     }
 })
 
+// @desc    add banner items
+// @route   post /api/banners/
+// @access  Privet
+const addGlobalCssItem = expressAsyncHandler(async (req, res) => {
+    const { bannerGlobalCss, banner } = req.body
+    const gcss = await GlobalCss.findOne({ banner: banner }).exec()
+    if(gcss){
+        res.status(400)
+        throw new Error("Can't create multiple Global Css.")
+        return
+    }
+
+    else if (!bannerGlobalCss) {
+        res.status(400)
+        throw new Error('Global css can not be empty.')
+        return
+    } else {
+        const globalCss = new GlobalCss({
+            banner: banner,
+            bannerGlobalCss:bannerGlobalCss,
+        })
+        const createdGlobalCss = await globalCss.save()
+        res.status(201).json(createdGlobalCss)
+    }
+})
 // @desc    Get banner by id
 // @route   GET /api/banners/:id
 // @access  Privet
@@ -113,6 +139,19 @@ const getBannerById = expressAsyncHandler(async (req, res) => {
     } else {
         res.status(404)
         throw new Error('banner not found')
+    }
+})
+// @desc    Get banner by id
+// @route   GET /api/banners/:id
+// @access  Privet
+const getGlobalCssItemById = expressAsyncHandler(async (req, res) => {
+    const globalCss = await GlobalCss.findOne({ banner: req.params.id }).exec()
+
+    if (globalCss) {
+        res.json(globalCss)
+    } else {
+        res.status(404)
+        throw new Error('globalCss not found')
     }
 })
 
@@ -138,6 +177,24 @@ const updateBanner = expressAsyncHandler(async (req, res) => {
     } else {
         res.status(404)
         throw new Error('banner not found')
+    }
+})
+// @desc    Update banner
+// @route   GET /api/banners/:id/pay
+// @access  Privet
+const updateGlobalCssItem = expressAsyncHandler(async (req, res) => {
+    const globalCss = await GlobalCss.findById(req.params.id)
+    const { bannerGlobalCss, banner } = req.body
+
+
+    if (globalCss) {
+        globalCss.bannerGlobalCss = bannerGlobalCss
+        globalCss.banner = banner
+        const updatedglobalCss = await globalCss.save()
+        res.json(updatedglobalCss)
+    } else {
+        res.status(404)
+        throw new Error('Global css not found')
     }
 })
 
@@ -173,13 +230,23 @@ const deleteBanner = expressAsyncHandler(async (req, res) => {
         throw new Error('Banner not found')
     }
 })
+const deleteGlobalCssItem = expressAsyncHandler(async (req, res) => {
+    const globalCss = await GlobalCss.findById(req.params.id)
+    if (globalCss) {
+        await globalCss.deleteOne()
+        res.json({ message: 'globalCss removed' })
+    } else {
+        res.status(404)
+        throw new Error('globalCss not found')
+    }
+})
 
 // @desc    Get banner by id
 // @route   GET /api/banners/generate/:id
 // @access  Privet
 const generateBanner = expressAsyncHandler(async (req, res) => {
     const banner = await Banner.findById(req.params.id).populate('user', 'name email')
-
+    const {bannerGlobalCss} = await GlobalCss.findOne({ banner: req.params.id }).exec()
     if (banner) {
         banner.bannerSizes.forEach(bannerSize => {
             let bannerHead = `<!DOCTYPE html>
@@ -192,7 +259,6 @@ const generateBanner = expressAsyncHandler(async (req, res) => {
               <title>Banner</title>
             </head>
             <body>`
-            let bannerGlobalCss = '<style>'
             let bannerdesingMarkup1 = ''
             let bannerdesingMarkup2 = ''
             let bannerdesingMarkup3 = ''
@@ -222,7 +288,7 @@ const generateBanner = expressAsyncHandler(async (req, res) => {
                       <div class="transform-y"  style="width:${bannerSize.width}px; height: ${bannerSize.height}px">
                         <div
                           class="ui-img img-01 ${item.element.uiCustomClasses}"
-                          style="position:'absolute'; left:${banner.cntElementStyles[bannerSize.name][item.element.cntElementUniqueClass].left}px; top:${banner.cntElementStyles[bannerSize.name][item.element.cntElementUniqueClass].top}px;transform-box:fill-box; transform-origin:0% 0% ; transform:scale(${banner.cntElementStyles[bannerSize.name][item.element.cntElementUniqueClass].scale / 100});width:${bannerSize.width}px; height: ${bannerSize.height}px;background-image:${banner.cntElementStyles[bannerSize.name][item.element.cntElementUniqueClass].bgImg ? 'url(\'' + banner.cntElementStyles[bannerSize.name][item.element.cntElementUniqueClass].bgImg : 'url(\''}')"
+                          style="position:absolute; left:${banner.cntElementStyles[bannerSize.name][item.element.cntElementUniqueClass].left}px; top:${banner.cntElementStyles[bannerSize.name][item.element.cntElementUniqueClass].top}px;transform-box:fill-box; transform-origin:0% 0% ; transform:scale(${banner.cntElementStyles[bannerSize.name][item.element.cntElementUniqueClass].scale / 100});width:${bannerSize.width}px; height: ${bannerSize.height}px;background-image:${banner.cntElementStyles[bannerSize.name][item.element.cntElementUniqueClass].bgImg ? 'url(\'' + banner.cntElementStyles[bannerSize.name][item.element.cntElementUniqueClass].bgImg : 'url(\''}')"
                         >
                           <div class="inner" >
                             ${item.innerHTML ? item.innerHTML : ''}
@@ -243,7 +309,7 @@ const generateBanner = expressAsyncHandler(async (req, res) => {
       </div> </body>
       </html>`;
             
-        writeFile('output/' + bannerSize.name + '.html', bannerHead + bannerdesingMarkup1 + bannerdesingMarkup2 + bannerdesingMarkup3, 'utf8', function () {
+        writeFile('output/' + bannerSize.name + '.html', bannerHead +bannerGlobalCss+ bannerdesingMarkup1 + bannerdesingMarkup2 + bannerdesingMarkup3, 'utf8', function () {
             console.log("file created")
         });
         })
@@ -260,5 +326,10 @@ export {
     getBannerById,
     updateBanner,
     getMyBanners,
-    getBanners, generateBanner
+    getBanners, 
+    generateBanner, 
+    addGlobalCssItem, 
+    getGlobalCssItemById, 
+    updateGlobalCssItem,
+    deleteGlobalCssItem
 }
