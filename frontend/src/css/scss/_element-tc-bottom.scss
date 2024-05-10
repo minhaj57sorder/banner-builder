@@ -1,0 +1,55 @@
+/* T&C LINKS
+-------------------------- */
+
+
+.ui-links {background: rgba(0,0,0,.4);}
+
+/* tc container */
+.ui-links {position: absolute; text-align: center; -webkit-font-smoothing: antialiased;}
+/* tc links */
+.ui-links .tc-link {display: inline-block;}
+.ui-links .tc-link:hover {cursor: pointer;}
+
+/* tc links prospect/retention */
+.cnt-banner.retention .tc-link.tc-prospect {display: none;} 
+.cnt-banner.prospect .tc-link.tc-retention {display: none;} 
+
+
+/* MOVE */
+.ui-popup {overflow-y:scroll;}
+
+.tc-open-btn {position: relative; text-decoration: underline;}
+.tc-open-btn::after {content: ''; position: absolute; opacity: .5; right: -20px; bottom: -10px;}
+
+/* T&C clickable area */
+/* Small (Default size) */
+.tc-open-btn::after {padding: 16px 62px;}
+
+/* Medium */
+.size_640x320 .tc-open-btn::after,
+.size_640x360 .tc-open-btn::after,
+
+.size_320x600 .tc-open-btn::after,
+.size_300x600 .tc-open-btn::after,
+.size_250x600 .tc-open-btn::after,
+.size_320x480 .tc-open-btn::after,
+.size_320x400 .tc-open-btn::after {padding: 18px 70px;}
+
+/* X-Small */
+.size_300x250 .tc-open-btn::after {padding: 18px 70px;}
+
+
+/* scroll */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0,.3);
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.15);
+}

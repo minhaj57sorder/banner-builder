@@ -1,0 +1,32 @@
+/* T&C LINKS
+-------------------------- */
+
+
+.ui-links {width: 100%;}
+
+
+/* tc container */
+.ui-links {position: absolute; text-align: center; -webkit-font-smoothing: antialiased;}
+/* tc links */
+.ui-links .tc-link {padding: 9px 4px; display: inline-block;}
+.ui-links .tc-link:hover {cursor: pointer;}
+.ui-links .tc-link.tc-prospect,
+.ui-links .tc-link.tc-retention {padding-right: 2px; text-decoration: underline;} 
+.ui-links .tc-link.stodlinjen {padding-left: 2px; padding-right: 2px;} 
+.ui-links .tc-link.spelpaus {padding-left: 2px;} 
+/* tc links prospect/retention */
+.cnt-banner.retention .tc-link.tc-prospect {display: none;} 
+.cnt-banner.prospect .tc-link.tc-retention {display: none;} 
+
+
+/* FORMAT SPECIFIC
+-------------------------- */
+
+.size_640x180 .ui-links {margin-top: 23px;}
+.size_640x100 .ui-links .tc-link {padding: 5px 4px;}
+.size_160x600 .ui-links .tc-link {padding: 5px 3px;}
+.size_728x90 .ui-links .tc-link {padding: 3px 4px;}
+
+.size_320x480 .ui-links .tc-link {padding: 6px 4px;}
+.size_320x320 .ui-links .tc-link {padding: 8px 4px;}
+.size_250x600 .ui-links .tc-link {padding: 3px 8px;}

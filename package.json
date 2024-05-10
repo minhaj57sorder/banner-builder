@@ -6,9 +6,9 @@
   "main": "app.js",
   "scripts": {
     "start": "node backend/app.js",
-    "start-dev": "npx nodemon backend/app.js",
-    "client": "quasar dev --prefix frontend",
-    "dev": "concurrently \"npm run start-dev\" \"npm run client\"",
+    "dev": "npx nodemon backend/app.js",
+    "client": "cd frontend && quasar dev",
+    "both": "concurrently \"npm run dev\" \"npm run client\"",
     "data:import": "node backend/seeder",
     "data:destroy": "node backend/seeder -d"
   },

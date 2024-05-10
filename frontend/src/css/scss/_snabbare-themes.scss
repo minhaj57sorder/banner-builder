@@ -1,0 +1,16 @@
+/* theme */
+.theme-blue,
+.theme-blue		 			{background-color: #1fb6ff;}
+.theme-purple,
+.theme-purple				{background-color: #7d5bef;}
+.theme-red,
+.theme-red		 			{background-color: #ef7171;}
+.theme-green,
+.theme-green		 		{background-color: #12ce66;}
+
+/* button */
+.theme-blue .ui-button 		{background-color: #12ce66; box-shadow: 0px -1px 0px #00a84f inset; -moz-box-shadow: 0px -1px 0px #00a84f inset; -webkit-box-shadow: 0px -1px 0px #00a84f inset;}
+.theme-purple .ui-button,
+.theme-red .ui-button,
+.theme-green .ui-button,
+.theme-orange .ui-button 	{background-color: #1fb6ff; box-shadow: 0px -1px 0px #1290cc inset; -moz-box-shadow: 0px -1px 0px #1290cc inset; -webkit-box-shadow: 0px -1px 0px #1290cc inset;}

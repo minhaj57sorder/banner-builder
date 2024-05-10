@@ -1,0 +1,27 @@
+/* Z-INDEX
+-------------------------- */
+
+
+/* 1000 - POPUP */
+.cnt-banner .ui-popup {z-index: 1000;} 
+
+
+/* 200 - LINKS ON TOP OF BANNER CLICK AREA */
+.cnt-banner .ui-links {z-index: 200;}
+.cnt-banner .click-area.tc-link {z-index: 200;}
+.cnt-banner .ui-links {z-index: 200;}
+
+
+/* BANNER CLICKAREA */
+.cnt-banner .click-area.snabbare {z-index: 100;}
+
+
+/* BANNER AREA */
+
+.cnt-element {z-index: 2;}
+.cnt-slides {z-index: 1;}
+
+
+/* BACKGROUNDS */
+
+.cnt-element.bg {z-index: 1;}

@@ -1,0 +1,10 @@
+a {text-decoration: none;}
+html, body {margin: 0!important;}
+
+.cnt-banner {font-family: sans-serif; line-height: 1.2285714286; position: relative; overflow: hidden; top:50%; -ms-transform:translateY(0%); transform:translateY(0%); }
+.cnt-banner a {}
+.cnt-banner svg {vertical-align: top;}
+.cnt-banner .cnt-element {position: absolute; -webkit-perspective: 1; -webkit-backface-visibility: none;} /* replace with ui elements */
+
+ul {margin: 0; padding: 0; padding-left: 10px;}
+ul li {margin: 0; padding: 0; margin-bottom: 10px;}

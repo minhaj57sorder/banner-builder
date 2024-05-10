@@ -1,0 +1,24 @@
+/* MAIN CLICK AREA
+-------------------------- */
+.cnt-banner .click-area.snabbare {width: 100%; height: 100%; position: absolute; top: 0; left: 0;}
+
+
+/* POINTER EVENTS
+-------------------------- */
+
+.cnt-element .ui-logo,
+.cnt-element .ui-button,
+
+.cnt-element .ui-svg,
+.cnt-element .ui-img,
+
+.cnt-element .ui-custom,
+
+.cnt-element .ui-links,
+
+.cnt-element .ui-popup {pointer-events: none;}
+
+.cnt-banner .click-area {pointer-events: fill;}
+
+/* hover cursor */
+.cnt-banner .click-area:hover {cursor: pointer;}

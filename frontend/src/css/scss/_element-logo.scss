@@ -1,0 +1,8 @@
+/* LOGO
+-------------------------- */
+
+.ui-logo {position: absolute;}
+.ui-logo .data-img {position: absolute; width: 100%;}
+
+.cnt-banner 		.ui-logo 		.data-img.tagline 	{display: none;} 
+.cnt-banner.tagline .ui-logo 		.data-img.tagline 	{display: block;}

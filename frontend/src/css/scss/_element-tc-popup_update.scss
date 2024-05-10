@@ -1,0 +1,15 @@
+/* T&C POPUP
+-------------------------- */
+
+.ui-popup {width: 100%; height: 100%; position: absolute; top: 0; left: 0; display: none;}
+/* popup - copy */
+.ui-popup .copy {padding-left: 20px; padding-right: 20px; padding-top: 0px; font-size: 14px; line-height: 18px; text-align: left; font-family: sans-serif; font-weight: normal; font-style: normal; position: absolute;}
+.ui-popup .copy a {}
+/* popup - close  */
+.ui-popup .close {padding: 10px;}
+.ui-popup .close:hover {cursor: pointer;}
+.ui-popup .close > .inner {border: 2px solid #fff; width: 18px; height: 18px; position: absolute; right: 10px; top: 10px; @include border-radius(100px);}
+.ui-popup .close > .inner .icon {position: absolute; width: 12px; height: 12px; top: 3px; left: 3px;}
+
+
+

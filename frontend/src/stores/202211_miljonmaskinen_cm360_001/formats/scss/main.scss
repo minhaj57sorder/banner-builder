@@ -1,0 +1,31 @@
+/* base styles */
+@import '../../../_global/scss/_reset';
+@import '../../../_global/scss/_mixins';
+@import '../../../_global/scss/_utilities';
+@import '../../../_global/scss/_data-img';
+@import '../../../_global/scss/_pointer-events';
+@import '../../../_global/scss/_z-index';
+
+/* elements */
+@import '../../../_global/scss/_element-logo';
+@import '../../../_global/scss/_element-button';
+@import '../../../_global/scss/_element-tc-popup_update';
+@import '../../../_global/scss/_element-tc-bottom';
+@import '../../../_global/scss/_element-custom';
+
+/* custom element preview */
+@import '../../../_global/scss/_preview-custom';
+
+/* snabbare */
+@import '../../../_global/scss/_snabbare-type';
+@import '../../../_global/scss/_snabbare-themes';
+@import '../../../_global/scss/_snabbare-dotted-border';
+@import '../../../_global/scss/_snabbare-data-img';
+
+.size_320x320 .ui-links .big,
+.size_300x250 .ui-links .big {display: none;}
+.size_320x320 .tiny {display: none;}
+
+.ui-popup p {margin: 10px 0;}
+
+.hide {display: none;}

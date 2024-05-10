@@ -294,7 +294,7 @@ const generateBanner = expressAsyncHandler(async (req, res) => {
                             ${item.innerHTML ? item.innerHTML : ''}
                           </div>
                           <div class="innerCSS">
-                            ${item.innerCSS ? item.innerCSS : ''}
+                            <style>${item.innerCSS ? item.innerCSS : ''}</style>
                           </div>
                         </div>
                       </div>

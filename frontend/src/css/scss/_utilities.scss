@@ -1,0 +1,37 @@
+/* Top, Bottom, Left, Right, Center Positioning
+-------------------------- */
+
+/* t&c links align */
+.tc-x-left .ui-links {text-align: left;}
+.tc-x-right .ui-links {text-align: right;}
+.tc-x-center .ui-links {text-align: center;}
+
+.logo-x-left .ui-logo .data-img {background-position: left;}
+.logo-x-right .ui-logo .data-img {background-position: right;}
+.logo-x-center .ui-logo .data-img {background-position: center;}
+
+.btn-x-left .cnt-element.button .ui-button {left: 0; right: initial;}
+.btn-x-right .cnt-element.button .ui-button {right: 0; left: initial;}
+.btn-x-center .cnt-element.button .ui-button {@include translate(-50%, 0); left: 50%; right: initial;}
+
+.tc-y-top .ui-links,
+.btn-y-top .cnt-element.button .ui-button,
+.logo-y-top .ui-logo .data-img {top: 0; bottom: initial;}
+
+.tc-y-bottom .ui-links,
+.btn-y-bottom .cnt-element.button .ui-button,
+.logo-y-bottom .ui-logo .data-img {bottom: 0; top: initial;}
+
+.tc-y-center .ui-links,
+.btn-y-center .cnt-element.button .ui-button,
+.logo-y-center .ui-logo .data-img {@include translate(0, -50%); top: 50%; bottom: initial;}
+
+.btn-x-center.btn-y-center .cnt-element.button .ui-button {@include translate(-50%, -50%);  left: 50%; top: 50%; right: initial; bottom: initial;}
+
+
+/* UI ELEMENTS
+-------------------------- */
+
+.ui-svg,
+.ui-img,
+.ui-custom {position: absolute; width: 100%; height: 10%; top: 0; left: 0; background-size: cover; height: 100%;}
